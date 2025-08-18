@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block tittle_text %}Eliminar Estudio{% endblock tittle_text %}
+{% block h1_text %}Eliminar Estudio{% endblock h1_text %}
+{% block p_text %}Seleccione qué estudio desea eliminar.{% endblock p_text %}
+
+{% block content %}
+<div class="container mt-5">
+    <ul class="list-group">
+        {% for estudio in estudios %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ estudio.nombre }} (Paciente: {{ estudio.paciente.nombre }} {{ estudio.paciente.apellido }})
+                <a href="{% url 'panopolis:borrar_estudio' estudio.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No hay estudios cargados.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

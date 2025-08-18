@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block tittle_text %}Actualizar Resultado{% endblock tittle_text %}
+{% block h1_text %}Actualizar Resultado{% endblock h1_text %}
+{% block p_text %}Seleccione qué resultado desea modificar.{% endblock p_text %}
+
+{% block content %}
+<div class="container mt-5">
+    <ul class="list-group">
+        {% for resultado in resultados %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ resultado.titulo }} (Estudio: {{ resultado.estudio.nombre }})
+                <a href="{% url 'panopolis:editar_resultado' resultado.id %}" class="btn btn-sm btn-warning">Editar</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No hay resultados cargados.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

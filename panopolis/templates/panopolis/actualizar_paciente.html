@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block tittle_text %}Actualizar Paciente{% endblock tittle_text %}
+{% block h1_text %}Actualizar Paciente{% endblock h1_text %}
+{% block p_text %}Seleccione qué paciente desea modificar.{% endblock p_text %}
+
+{% block content %}
+<div class="container mt-5">
+    <ul class="list-group">
+        {% for paciente in pacientes %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ paciente.nombre }} {{ paciente.apellido }} (DNI: {{ paciente.dni }})
+                <a href="{% url 'panopolis:editar_paciente' paciente.id %}" class="btn btn-sm btn-primary">Editar</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No hay pacientes cargados.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

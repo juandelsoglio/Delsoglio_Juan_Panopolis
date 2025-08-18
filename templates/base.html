@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Panópolis - {% block titulo %}Inicio{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #333;
+        }
+        /* Estilos para el footer */
+        footer {
+            background-color: #1f2937;
+            color: #d1d5db;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+    <header class="bg-blue-800 text-white p-4 shadow-md">
+        <nav class="container mx-auto flex justify-between items-center">
+            
+            <a href="{% url 'panopolis:inicio' %}" class="text-3xl font-bold tracking-tight">Laboratorio Panópolis</a>
+
+            <div class="space-x-4">
+                <a href="{% url 'panopolis:inicio' %}" class="px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700 transition duration-300">
+                    INICIO
+                </a>
+                <a href="{% url 'usuarios:login' %}" class="px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700 transition duration-300">
+                    INICIAR SESIÓN
+                </a>
+                <a href="{% url 'usuarios:registro' %}" class="px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700 transition duration-300">
+                    REGISTRARSE
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-8 flex-grow">
+        {% block contenido %}
+           
+        {% endblock %}
+    </main>
+
+    <footer class="text-center p-4 flex flex-col items-center">
+        
+        <div class="mb-4">
+            <a href="{% url 'panopolis:about' %}" class="px-6 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition duration-300">
+                ACERCA DE MÍ
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
