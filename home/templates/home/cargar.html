@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>¿Qué deseas cargar?</h2>
+    <div class="mt-4">
+        <a href="{% url 'home:cargar_jugador' %}" class="btn btn-primary me-2">Jugador</a>
+        <a href="{% url 'home:cargar_club' %}" class="btn btn-success me-2">Club</a>
+        <a href="{% url 'home:cargar_descripcion' %}" class="btn btn-info">Descripción</a>
+    </div>
+</div>
+{% endblock %}
+
+

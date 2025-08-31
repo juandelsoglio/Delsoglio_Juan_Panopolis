@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block tittle_text %}Iniciar Sesión{% endblock %}
+{% block h1_text %}Iniciar Sesión{% endblock %}
+{% block p_text %}Ingresá con tu usuario y contraseña{% endblock p_text %}
+
+{% block content %}
+<div class="container mt-4 d-flex justify-content-center">
+  <form method="post" style="max-width: 400px; width: 100%;">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <div class="d-flex justify-content-center mt-3">
+      <button type="submit" class="btn btn-primary px-4">Iniciar sesión</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

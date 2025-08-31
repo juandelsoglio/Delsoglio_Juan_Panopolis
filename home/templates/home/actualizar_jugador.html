@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>Actualizar Jugadores</h2>
+    <ul class="list-group">
+        {% for jugador in jugadores %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ jugador.nombre }} {{ jugador.apellido }}
+            <a href="{% url 'home:editar_jugador' jugador.id %}" class="btn btn-primary btn-sm">Editar</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No hay jugadores.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+

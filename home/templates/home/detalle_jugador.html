@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>{{ jugador.nombre }} {{ jugador.apellido }}</h2>
+    <p>Posición: {{ jugador.posicion }}</p>
+    <p>Fecha de nacimiento: {{ jugador.fecha_nacimiento }}</p>
+    <p>Club: {{ jugador.club.nombre if jugador.club }}</p>
+    {% if jugador.foto %}
+        <img src="{{ jugador.foto.url }}" alt="Foto de {{ jugador.nombre }}" class="img-thumbnail" style="max-width:200px;">
+    {% endif %}
+
+    <h3 class="mt-4">Descripciones</h3>
+    <ul class="list-group">
+        {% for d in descripcion %}
+        <li class="list-group-item">{{ d.texto }} - <strong>{{ d.usuario }}</strong></li>
+        {% empty %}
+        <li class="list-group-item">No hay descripciones.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

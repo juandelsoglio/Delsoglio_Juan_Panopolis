@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <h3>¿Deseas eliminar al club {{ object.nombre }}?</h3>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-warning">Sí, eliminar</button>
+        <a href="{% url 'home:eliminar_club' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

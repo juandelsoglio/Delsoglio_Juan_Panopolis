@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 text-center">
+    <h3>¿Deseas eliminar esta descripción?</h3>
+    <p>{{ object.texto }} - {{ object.usuario }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-info">Sí, eliminar</button>
+        <a href="{% url 'home:eliminar_descripcion' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
