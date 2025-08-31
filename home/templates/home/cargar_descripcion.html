@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Cargar Descripción{% endblock tittle_text %}
+{% block h1_text %}Cargar Descripción{% endblock h1_text %}
+{% block p_text %}Ingresá la descripción que quieras agregar{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Cargar Descripción</h2>
-    {% if mensaje %}<div class="alert alert-success">{{ mensaje }}</div>{% endif %}
+    {% if mensaje %}
+        <div class="alert alert-success">{{ mensaje }}</div>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-info">Guardar</button>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
 

@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Editar Descripción{% endblock tittle_text %}
+{% block h1_text %}Editar Descripción{% endblock h1_text %}
+{% block p_text %}Modificá el texto de la descripción{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Editar Descripción</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-info">Guardar cambios</button>
-        <a href="{% url 'home:actualizar_descripcion' %}" class="btn btn-secondary">Cancelar</a>
+        <div class="d-flex gap-2 flex-wrap mt-3">
+            <button type="submit" class="btn btn-info">Guardar cambios</button>
+            <a href="{% url 'home:actualizar_descripcion' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
 

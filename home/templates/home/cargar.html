@@ -1,15 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Cargar Datos{% endblock tittle_text %}
+{% block h1_text %}¿Qué deseas cargar?{% endblock h1_text %}
+{% block p_text %}Elegí el tipo de información que quieres agregar al sistema{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>¿Qué deseas cargar?</h2>
     <div class="mt-4">
         <a href="{% url 'home:cargar_jugador' %}" class="btn btn-primary me-2">Jugador</a>
         <a href="{% url 'home:cargar_club' %}" class="btn btn-success me-2">Club</a>
         <a href="{% url 'home:cargar_descripcion' %}" class="btn btn-info">Descripción</a>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}
+
 
 

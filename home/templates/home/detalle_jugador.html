@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Detalle del Jugador{% endblock tittle_text %}
+{% block h1_text %}{{ jugador.nombre }} {{ jugador.apellido }}{% endblock h1_text %}
+{% block p_text %}Información y descripciones del jugador{% endblock p_text %}
+
 {% block content %}
-<div class="container py-5">
-    <h2>{{ jugador.nombre }} {{ jugador.apellido }}</h2>
+<div class="container py-5 text-white">
     <p>Posición: {{ jugador.posicion }}</p>
     <p>Fecha de nacimiento: {{ jugador.fecha_nacimiento }}</p>
     <p>Club: {{ jugador.club.nombre if jugador.club }}</p>
+
     {% if jugador.foto %}
-        <img src="{{ jugador.foto.url }}" alt="Foto de {{ jugador.nombre }}" class="img-thumbnail" style="max-width:200px;">
+        <div class="my-3 text-center">
+            <img src="{{ jugador.foto.url }}" alt="Foto de {{ jugador.nombre }}" class="img-thumbnail" style="max-width:200px;">
+        </div>
     {% endif %}
 
     <h3 class="mt-4">Descripciones</h3>
@@ -20,4 +26,5 @@
         {% endfor %}
     </ul>
 </div>
-{% endblock %}
+{% endblock content %}
+

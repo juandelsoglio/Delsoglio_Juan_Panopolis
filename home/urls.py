@@ -22,7 +22,7 @@ app_name = 'home'
 
 urlpatterns = [
     # Páginas estáticas
-    path('', views.inicio, name='inicio'),
+    path('', views.inicio, name='inicio'),   
     path('acerca/', views.acerca, name='acerca'),
     path('cargar/', views.carga, name='cargar'),
     path('listado/', views.listado, name='listado'),

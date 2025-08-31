@@ -1,17 +1,24 @@
 {% extends "base.html" %}
-{% block tittle_text %}Registro{% endblock %}
-{% block h1_text %}Registro{% endblock %}
+{% load static %}
+
+{% block tittle_text %}Registro{% endblock tittle_text %}
+{% block h1_text %}Registro{% endblock h1_text %}
 {% block p_text %}Ingresá tus datos para registrarte{% endblock p_text %}
 
 {% block content %}
 <div class="container mt-4 d-flex justify-content-center">
-  <form method="post" enctype="multipart/form-data" style="max-width: 500px; width: 100%;">
-    {% csrf_token %}
-    {{ formulario.as_p }}
-
-    <div class="d-flex justify-content-center mt-3">
-      <button type="submit" class="btn btn-primary px-4">Registrarse</button>
-    </div>
-  </form>
+    <form method="post" enctype="multipart/form-data" style="max-width: 500px; width: 100%;">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" class="btn btn-primary px-4">Registrarse</button>
+        </div>
+    </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
+
+
+
+
+

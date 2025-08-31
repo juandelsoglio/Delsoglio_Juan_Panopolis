@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Cargar Jugador{% endblock tittle_text %}
+{% block h1_text %}Cargar Jugador{% endblock h1_text %}
+{% block p_text %}Ingresá los datos del jugador que quieras agregar{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Cargar Jugador</h2>
-    {% if mensaje %}<div class="alert alert-success">{{ mensaje }}</div>{% endif %}
+    {% if mensaje %}
+        <div class="alert alert-success">{{ mensaje }}</div>
+    {% endif %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
 

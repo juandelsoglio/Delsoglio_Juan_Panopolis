@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Editar Club{% endblock tittle_text %}
+{% block h1_text %}Editar Club{% endblock h1_text %}
+{% block p_text %}Modificá los datos del club{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Editar Club</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Guardar cambios</button>
-        <a href="{% url 'home:actualizar_club' %}" class="btn btn-secondary">Cancelar</a>
+        <div class="d-flex gap-2 flex-wrap mt-3">
+            <button type="submit" class="btn btn-success">Guardar cambios</button>
+            <a href="{% url 'home:actualizar_club' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
 
 

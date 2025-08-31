@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Eliminar Club{% endblock tittle_text %}
+{% block h1_text %}Eliminar Club{% endblock h1_text %}
+{% block p_text %}Seleccioná un club para eliminar{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Eliminar Club</h2>
     <ul class="list-group">
         {% for club in clubes %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -15,5 +18,6 @@
         {% endfor %}
     </ul>
 </div>
-{% endblock %}
+{% endblock content %}
+
 

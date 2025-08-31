@@ -1,21 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="container text-center py-5" style="margin-top:100px;">
-    <h1 class="display-4">¡Bienvenido a Panópolis - Federal A!</h1>
-    <p class="lead mt-3">Inicia sesión para cargar jugadores y clubes</p>
+{% block tittle_text %}Inicio{% endblock tittle_text %}
+{% block h1_text %}¡Bienvenido a Panópolis - Federal A!{% endblock h1_text %}
+{% block p_text %}Registrate e iniciá sesión para cargar clubes, jugadores y descripciones de los mismos{% endblock p_text %}
 
-    <div class="mt-4">
-        <a href="{% url 'login' %}" class="btn btn-primary me-2">Iniciar Sesión</a>
-        <a href="{% url 'register' %}" class="btn btn-secondary">Registrarse</a>
-    </div>
-</div>
 
-<footer class="text-center mt-5">
-    <a href="{% url 'home:acerca' %}" class="text-decoration-none">Acerca de Mi</a>
-</footer>
-{% endblock %}
+
+
+
+
+
+
+
 
 
 

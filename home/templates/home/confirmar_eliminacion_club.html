@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Eliminar Club{% endblock tittle_text %}
+{% block h1_text %}Confirmar eliminación{% endblock h1_text %}
+{% block p_text %}¿Estás seguro de que quieres eliminar este club?{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5 text-center">
     <h3>¿Deseas eliminar al club {{ object.nombre }}?</h3>
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-warning">Sí, eliminar</button>
-        <a href="{% url 'home:eliminar_club' %}" class="btn btn-secondary">Cancelar</a>
+        <a href="{% url 'home:actualizar_club' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}

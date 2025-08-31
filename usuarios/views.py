@@ -10,6 +10,16 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required   
+from django.contrib.auth import login as django_login, logout
+from usuarios.forms import FormularioRegistro, FormularioEdicionUsuario
+from usuarios.models import PerfilUsuario
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
+
 # ----------- LOGIN -----------
 def login(request):
     if request.method == 'POST':
@@ -33,15 +43,11 @@ def registro(request):
             user.email = formulario.cleaned_data['email']
             user.save()
 
-            edad = formulario.cleaned_data.get('edad')
-            hinchade = formulario.cleaned_data.get('hinchade')
-            avatar = formulario.cleaned_data.get('avatar')
-
             PerfilUsuario.objects.create(
                 user=user,
-                edad=edad,
-                hinchade=hinchade,
-                avatar=avatar
+                edad=formulario.cleaned_data.get('edad'),
+                hinchade=formulario.cleaned_data.get('hinchade'),
+                avatar=formulario.cleaned_data.get('avatar')
             )
             return redirect('home:inicio')
     else:
@@ -52,10 +58,7 @@ def registro(request):
 @login_required
 def detalle_usuario(request):
     perfil, creado = PerfilUsuario.objects.get_or_create(user=request.user)
-    return render(request, 'usuarios/detalle.html', {
-        'usuario': request.user,
-        'perfil': perfil
-    })
+    return render(request, 'usuarios/detalle.html', {'usuario': request.user, 'perfil': perfil})
 
 # ----------- EDITAR PERFIL -----------
 @login_required
@@ -95,3 +98,12 @@ class EditarContrasenia(LoginRequiredMixin, PasswordChangeView):
         for field in form.fields.values():
             field.help_text = None
         return form
+
+# ----------- CERRAR SESIÓN -----------
+@login_required
+def cerrar_sesion(request):
+    if request.method == 'POST':
+        logout(request)
+        return render(request, 'usuarios/logout.html')
+    return redirect('usuarios:login')
+

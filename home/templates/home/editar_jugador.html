@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Editar Jugador{% endblock tittle_text %}
+{% block h1_text %}Editar Jugador{% endblock h1_text %}
+{% block p_text %}Modificá los datos del jugador{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Editar Jugador</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Guardar cambios</button>
-        <a href="{% url 'home:actualizar_jugador' %}" class="btn btn-secondary">Cancelar</a>
+        <div class="d-flex gap-2 flex-wrap mt-3">
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <a href="{% url 'home:actualizar_jugador' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
 

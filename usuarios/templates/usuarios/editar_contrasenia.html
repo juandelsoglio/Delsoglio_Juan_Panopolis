@@ -1,17 +1,19 @@
 {% extends "base.html" %}
-{% block tittle_text %}Editar Contraseña{% endblock %}
-{% block h1_text %}Editar Contraseña {{ usuario.username }}{% endblock %}
-{% block p_text %}Edita tu contraseña{% endblock p_text %}
+
+{% block tittle_text %}Cambiar Contraseña{% endblock tittle_text %}
+{% block h1_text %}Editar tu contraseña{% endblock h1_text %}
+{% block p_text %}Actualizá tu contraseña de usuario{% endblock p_text %}
 
 {% block content %}
 <div class="container mt-4 d-flex justify-content-center">
-  <form method="post" style="max-width: 500px; width: 100%;">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <div class="d-flex justify-content-center mt-3">
-      <button type="submit" class="btn btn-success px-4">Guardar cambios</button>
-    </div>
-  </form>
+    <form method="post" style="max-width: 500px; width: 100%;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+            <button type="submit" class="btn btn-success px-4">Guardar contraseña</button>
+            <a href="{% url 'usuarios:detalle' %}" class="btn btn-secondary px-4">Cancelar</a>
+        </div>
+    </form>
 </div>
-{% endblock %}
+{% endblock content %}
+

@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Cargar Club{% endblock tittle_text %}
+{% block h1_text %}Cargar Club{% endblock h1_text %}
+{% block p_text %}Ingresá los datos del club que quieras agregar{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Cargar Club</h2>
-    {% if mensaje %}<div class="alert alert-success">{{ mensaje }}</div>{% endif %}
+    {% if mensaje %}
+        <div class="alert alert-success">{{ mensaje }}</div>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-success">Guardar</button>
     </form>
 </div>
-{% endblock %}
+{% endblock content %}
+
 
 

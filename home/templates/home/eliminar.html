@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Eliminar{% endblock tittle_text %}
+{% block h1_text %}Eliminar Contenido{% endblock h1_text %}
+{% block p_text %}Seleccioná qué tipo de información deseas eliminar{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>¿Qué deseas eliminar?</h2>
     <div class="mt-4">
         <a href="{% url 'home:eliminar_jugador' %}" class="btn btn-danger me-2">Jugadores</a>
         <a href="{% url 'home:eliminar_club' %}" class="btn btn-warning me-2">Clubes</a>
         <a href="{% url 'home:eliminar_descripcion' %}" class="btn btn-info">Descripciones</a>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}
+
+
 

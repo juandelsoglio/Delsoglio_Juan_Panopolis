@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block tittle_text %}Actualizar Descripciones{% endblock tittle_text %}
+{% block h1_text %}Actualizar Descripciones{% endblock h1_text %}
+{% block p_text %}Lista de descripciones ingresadas por los usuarios{% endblock p_text %}
+
 {% block content %}
 <div class="container py-5">
-    <h2>Actualizar Descripciones</h2>
     <ul class="list-group">
         {% for desc in descripciones %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -15,4 +18,5 @@
         {% endfor %}
     </ul>
 </div>
-{% endblock %}
+{% endblock content %}
+

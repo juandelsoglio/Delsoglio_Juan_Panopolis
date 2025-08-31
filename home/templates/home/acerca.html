@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block content %}
-<div class="container py-5">
-    <h1 class="mb-4">Acerca de Panópolis</h1>
-    <p>
-        ¡Hola! Soy <strong>Juan Delsoglio</strong>. Realicé este proyecto con <strong>Django</strong> 
+{% block tittle_text %}Acerca de mí{% endblock tittle_text %}
+{% block h1_text %}Acerca de Panópolis - Federal A{% endblock h1_text %}
+{% block p_text %}Hola! Soy <strong>Juan Delsoglio</strong>. Realicé este proyecto con <strong>Django</strong> 
         para mi proyecto final de Python en Coderhouse.
-    </p>
+{% endblock p_text %}
+
+{% block content %}
+<div class="container py-4">
     <p>
         Contacto: <a href="mailto:jdelsoglio@gmail.com">jdelsoglio@gmail.com</a>
     </p>
 </div>
-{% endblock %}
+{% endblock content %}
+
 
 
