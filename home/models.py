@@ -4,6 +4,7 @@ class Club(models.Model):
     nombre = models.CharField(max_length=100)
     provincia = models.CharField(max_length=100, blank=True, null=True)
     fundacion = models.PositiveIntegerField(blank=True, null=True)
+    escudo = models.ImageField(upload_to='clubes/', blank=True, null=True)  
 
     def __str__(self):
         return self.nombre
@@ -17,7 +18,7 @@ class Jugador(models.Model):
     foto = models.ImageField(upload_to='jugadores/', blank=True, null=True)
 
     def __str__(self):
-        return self.apellido
+        return f"{self.nombre} {self.apellido}"
 
 class Descripcion(models.Model):
     usuario = models.CharField(max_length=100)
@@ -25,5 +26,7 @@ class Descripcion(models.Model):
     texto = models.TextField()
 
     def __str__(self):
-        return f"Descripción de {self.jugador.nombre}{self.jugador.apellido}"
+        return f"Descripción de {self.jugador.nombre} {self.jugador.apellido}"
+
+
 

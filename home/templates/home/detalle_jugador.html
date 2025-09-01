@@ -1,30 +1,46 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block tittle_text %}Detalle del Jugador{% endblock tittle_text %}
+{% block tittle_text %}{{ jugador.nombre }} {{ jugador.apellido }}{% endblock tittle_text %}
 {% block h1_text %}{{ jugador.nombre }} {{ jugador.apellido }}{% endblock h1_text %}
-{% block p_text %}Información y descripciones del jugador{% endblock p_text %}
+{% block p_text %}Detalle completo del jugador{% endblock p_text %}
 
 {% block content %}
-<div class="container py-5 text-white">
-    <p>Posición: {{ jugador.posicion }}</p>
-    <p>Fecha de nacimiento: {{ jugador.fecha_nacimiento }}</p>
-    <p>Club: {{ jugador.club.nombre if jugador.club }}</p>
+<div class="text-white-75 mb-4">
 
     {% if jugador.foto %}
-        <div class="my-3 text-center">
-            <img src="{{ jugador.foto.url }}" alt="Foto de {{ jugador.nombre }}" class="img-thumbnail" style="max-width:200px;">
-        </div>
+      <div class="text-center mb-4">
+        <img src="{{ jugador.foto.url }}"
+            alt="Foto de {{ jugador.nombre }} {{ jugador.apellido }}"
+            class="rounded-circle shadow"
+            style="width: 120px; height: 120px; object-fit: cover;">
+      </div>
     {% endif %}
 
-    <h3 class="mt-4">Descripciones</h3>
-    <ul class="list-group">
-        {% for d in descripcion %}
-        <li class="list-group-item">{{ d.texto }} - <strong>{{ d.usuario }}</strong></li>
-        {% empty %}
-        <li class="list-group-item">No hay descripciones.</li>
-        {% endfor %}
-    </ul>
+    {% if jugador.posicion %}
+        <p><strong>Posición:</strong> {{ jugador.posicion }}</p>
+    {% endif %}
+    {% if jugador.fecha_nacimiento %}
+        <p><strong>Fecha de nacimiento:</strong> {{ jugador.fecha_nacimiento }}</p>
+    {% endif %}
+    {% if jugador.club %}
+        <p><strong>Club:</strong> {{ jugador.club.nombre }}</p>
+    {% else %}
+        <p><strong>Club:</strong> Sin club asignado</p>
+    {% endif %}
+    
+    <hr>
+    <h4>Descripciones</h4>
+    {% for d in descripcion %}
+      <div class="border p-3 mb-3">
+        <p>{{ d.texto }}</p>
+        <p><strong>Usuario:</strong> {{ d.usuario }}</p>
+      </div>
+    {% empty %}
+      <p>No hay descripciones aún.</p>
+    {% endfor %}
 </div>
 {% endblock content %}
+
+
 

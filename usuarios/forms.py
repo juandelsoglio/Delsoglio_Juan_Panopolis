@@ -19,7 +19,7 @@ class FormularioRegistro(UserCreationForm):
     class Meta:
         model = User
         fields = [
-            'username', 'first_name', 'last_name', 'email','password1', 'password2', 'edad', 'hinchade', 'avatar']
+            'username', 'first_name', 'last_name', 'email','edad','hinchade', 'avatar','password1', 'password2']
         # Esto elimina los mensajes de ayuda automáticos
         help_texts = {field: '' for field in fields}
 

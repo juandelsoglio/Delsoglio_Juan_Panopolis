@@ -46,7 +46,7 @@ def cargar_jugador(request):
 def cargar_club(request):
     mensaje = ""
     if request.method == 'POST':
-        form = ClubForm(request.POST)
+        form = ClubForm(request.POST, request.FILES) 
         if form.is_valid():
             form.save()
             mensaje = "🏳️ El club ha sido cargado correctamente"
@@ -55,20 +55,24 @@ def cargar_club(request):
         form = ClubForm()
     return render(request, 'home/cargar_club.html', {'form': form, 'mensaje': mensaje})
 
+
+
 @login_required
 def cargar_descripcion(request):
     mensaje = ""
     if request.method == 'POST':
-        form = DescripcionForm(request.POST)
+        form = DescripcionForm(request.POST, user=request.user)
         if form.is_valid():
             descripcion = form.save(commit=False)
-            descripcion.usuario = request.user.username  # asigna automáticamente usuario logueado
+            descripcion.usuario = request.user.username  # asegura que se guarde el usuario logueado
             descripcion.save()
             mensaje = "💬 La descripción del jugador ha sido cargada correctamente"
-            form = DescripcionForm()
+            form = DescripcionForm(user=request.user)
     else:
-        form = DescripcionForm()
+        form = DescripcionForm(user=request.user)
+
     return render(request, 'home/cargar_descripcion.html', {'form': form, 'mensaje': mensaje})
+
 
 # ---------- DETALLES ----------
 

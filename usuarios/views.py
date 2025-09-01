@@ -1,7 +1,7 @@
 
 # Create your views here.
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required   
 from django.contrib.auth import login as django_login
 from usuarios.forms import FormularioRegistro, FormularioEdicionUsuario
@@ -10,17 +10,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.decorators import login_required   
-from django.contrib.auth import login as django_login, logout
-from usuarios.forms import FormularioRegistro, FormularioEdicionUsuario
-from usuarios.models import PerfilUsuario
-from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import PasswordChangeView
 
-# ----------- LOGIN -----------
+# LOGIN 
 def login(request):
     if request.method == 'POST':
         formulario = AuthenticationForm(request, data=request.POST)
@@ -32,7 +23,7 @@ def login(request):
         formulario = AuthenticationForm()
     return render(request, 'usuarios/login.html', {'formulario': formulario})
 
-# ----------- REGISTRO -----------
+# REGISTRO 
 def registro(request):
     if request.method == 'POST':
         formulario = FormularioRegistro(request.POST, request.FILES)
@@ -54,13 +45,13 @@ def registro(request):
         formulario = FormularioRegistro()
     return render(request, 'usuarios/registro.html', {'formulario': formulario})
 
-# ----------- PERFIL / DETALLE -----------
+#  PERFIL / DETALLE 
 @login_required
 def detalle_usuario(request):
     perfil, creado = PerfilUsuario.objects.get_or_create(user=request.user)
     return render(request, 'usuarios/detalle.html', {'usuario': request.user, 'perfil': perfil})
 
-# ----------- EDITAR PERFIL -----------
+#  EDITAR PERFIL 
 @login_required
 def editar_usuario(request):
     perfil = request.user.perfilusuario
@@ -68,7 +59,7 @@ def editar_usuario(request):
     if request.method == 'POST':
         formulario = FormularioEdicionUsuario(request.POST, request.FILES, instance=request.user)
         if formulario.is_valid():
-            usuario = formulario.save()
+            formulario.save()
             perfil.edad = formulario.cleaned_data.get('edad')
             perfil.hinchade = formulario.cleaned_data.get('hinchade')
             nuevo_avatar = formulario.cleaned_data.get('avatar')
@@ -88,7 +79,7 @@ def editar_usuario(request):
 
     return render(request, 'usuarios/editar_perfil.html', {'formulario': formulario})
 
-# ----------- CAMBIAR CONTRASEÑA -----------
+# CAMBIAR CONTRASEÑA 
 class EditarContrasenia(LoginRequiredMixin, PasswordChangeView):
     template_name = 'usuarios/editar_contrasenia.html'
     success_url = reverse_lazy('usuarios:detalle')
@@ -99,11 +90,4 @@ class EditarContrasenia(LoginRequiredMixin, PasswordChangeView):
             field.help_text = None
         return form
 
-# ----------- CERRAR SESIÓN -----------
-@login_required
-def cerrar_sesion(request):
-    if request.method == 'POST':
-        logout(request)
-        return render(request, 'usuarios/logout.html')
-    return redirect('usuarios:login')
 

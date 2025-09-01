@@ -1,9 +1,7 @@
 {% extends "base.html" %}
-{% load static %}
-
 {% block tittle_text %}Cargar Descripción{% endblock tittle_text %}
 {% block h1_text %}Cargar Descripción{% endblock h1_text %}
-{% block p_text %}Ingresá la descripción que quieras agregar{% endblock p_text %}
+{% block p_text %}Ingresá una descripción para un jugador{% endblock p_text %}
 
 {% block content %}
 <div class="container py-5">
@@ -12,10 +10,26 @@
     {% endif %}
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-info">Guardar</button>
+        
+        <div class="mb-3">
+            <label class="form-label"><strong>Usuario:</strong></label>
+            <p class="form-control-plaintext">{{ request.user.username }}</p>
+        </div>
+
+        <div class="mb-3">
+            {{ form.jugador.label_tag }}
+            {{ form.jugador }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.texto.label_tag }}
+            {{ form.texto }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
 </div>
 {% endblock content %}
+
 
 

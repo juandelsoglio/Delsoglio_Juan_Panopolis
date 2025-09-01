@@ -2,8 +2,34 @@
 {% load static %}
 
 {% block tittle_text %}Inicio{% endblock tittle_text %}
-{% block h1_text %}¡Bienvenido a Panópolis - Federal A!{% endblock h1_text %}
-{% block p_text %}Registrate e iniciá sesión para cargar clubes, jugadores y descripciones de los mismos{% endblock p_text %}
+
+{% block h1_text %}
+    {% if user.is_authenticated %}
+        ¡Bienvenido {{ user.username }} a Panópolis - Federal A!
+    {% else %}
+        ¡Bienvenido a Panópolis - Federal A!
+    {% endif %}
+{% endblock h1_text %}
+
+{% block p_text %}
+    {% if not user.is_authenticated %}
+        Registrate e iniciá sesión para cargar clubes, jugadores y descripciones de los mismos
+    {% endif %}
+{% endblock p_text %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="d-flex justify-content-center gap-3 mb-4">
+            <a href="{% url 'home:listado' %}" class="btn btn-primary">Listado</a>
+            <a href="{% url 'home:cargar' %}" class="btn btn-success">Cargar</a>
+            <a href="{% url 'home:actualizar' %}" class="btn btn-warning">Actualizar</a>
+            <a href="{% url 'home:eliminar' %}" class="btn btn-danger">Eliminar</a>
+        </div>
+    {% endif %}
+{% endblock content %}
+
+
+
 
 
 
