@@ -26,7 +26,7 @@ class Descripcion(models.Model):
     texto = models.TextField()
 
     def __str__(self):
-        return f"Descripción de {self.jugador.nombre} {self.jugador.apellido}"
+        return f"Comentario de {self.jugador.nombre} {self.jugador.apellido}"
 
 
 

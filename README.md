@@ -16,8 +16,14 @@ Entre las funcionalidades principales se incluyen:
 
 ✅ Gestión de clubes: carga, edición y eliminación.
 
-✅ Gestión de descripciones: agregar, editar y eliminar comentarios o descripciones asociadas a jugadores.
+✅ Gestión de comentarios: agregar, editar y eliminar comentarios o descripciones asociadas a jugadores.
 
 ✅ Interfaz consistente y responsiva basada en plantillas con bloques reutilizables (base.html), mejorando la experiencia de usuario y la mantenibilidad del código.
 
 El proyecto combina buenas prácticas de Django, manejo de formularios personalizados, vistas basadas en funciones y clases, validación de contraseñas y permisos de usuario, ofreciendo un ejemplo completo de una aplicación web funcional con gestión de datos.
+
+## 🎥 Demostración del proyecto
+
+Podés ver el funcionamiento completo del proyecto en el siguiente video:
+
+[Ver video en Drive](https://drive.google.com/file/d/1xnh99TOkzk8Uc8BR1hTTW_NhffmyJEBD/view?usp=sharing)

@@ -30,14 +30,14 @@
     {% endif %}
     
     <hr>
-    <h4>Descripciones</h4>
+    <h4>Comentario</h4>
     {% for d in descripcion %}
       <div class="border p-3 mb-3">
         <p>{{ d.texto }}</p>
         <p><strong>Usuario:</strong> {{ d.usuario }}</p>
       </div>
     {% empty %}
-      <p>No hay descripciones aún.</p>
+      <p>No hay comentarios aún.</p>
     {% endfor %}
 </div>
 {% endblock content %}

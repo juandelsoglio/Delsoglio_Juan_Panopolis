@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block tittle_text %}Actualizar Datos{% endblock tittle_text %}
-{% block h1_text %}¿Qué deseas actualizar?{% endblock h1_text %}
-{% block p_text %}Selecciona la sección que quieras modificar{% endblock p_text %}
+{% block h1_text %}¿Qué querés actualizar?{% endblock h1_text %}
+{% block p_text %}Seleccioná qué tipo de contenido querés actualizar{% endblock p_text %}
 
 {% block content %}
 <div class="container py-5">
     <div class="mt-4">
-        <a href="{% url 'home:actualizar_jugador' %}" class="btn btn-primary me-2">Jugadores</a>
-        <a href="{% url 'home:actualizar_club' %}" class="btn btn-success me-2">Clubes</a>
-        <a href="{% url 'home:actualizar_descripcion' %}" class="btn btn-info">Descripciones</a>
+        <a href="{% url 'home:actualizar_jugador' %}" class="btn btn-primary me-2">Jugador</a>
+        <a href="{% url 'home:actualizar_club' %}" class="btn btn-success me-2">Club</a>
+        <a href="{% url 'home:actualizar_descripcion' %}" class="btn btn-info">Comentario</a>
     </div>
 </div>
 {% endblock content %}

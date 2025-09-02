@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block tittle_text %}Eliminar Descripción{% endblock tittle_text %}
-{% block h1_text %}Eliminar Descripciones{% endblock h1_text %}
-{% block p_text %}Seleccioná una descripción para eliminar{% endblock p_text %}
+{% block tittle_text %}Eliminar Comentario{% endblock tittle_text %}
+{% block h1_text %}Eliminar Comentarios{% endblock h1_text %}
+{% block p_text %}Seleccioná una Comentario para eliminar{% endblock p_text %}
 
 {% block content %}
 <div class="container py-5">
@@ -14,7 +14,7 @@
             <a href="{% url 'home:eliminar_descripcion_confirm' desc.id %}" class="btn btn-info btn-sm">Eliminar</a>
         </li>
         {% empty %}
-        <li class="list-group-item">No hay descripciones.</li>
+        <li class="list-group-item">No hay comentarios.</li>
         {% endfor %}
     </ul>
 </div>

@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
-# ---------- PÁGINAS PRINCIPALES ----------
+# PÁGINAS PRINCIPALES 
 
 def inicio(request):
     return render(request, 'home/index.html')
@@ -27,7 +27,7 @@ def listado(request):
         jugadores = Jugador.objects.all()
     return render(request, 'home/listado.html', {'jugadores': jugadores, 'query': query})
 
-# ---------- CARGAR ----------
+# CARGAR 
 
 @login_required
 def cargar_jugador(request):
@@ -64,7 +64,7 @@ def cargar_descripcion(request):
         form = DescripcionForm(request.POST, user=request.user)
         if form.is_valid():
             descripcion = form.save(commit=False)
-            descripcion.usuario = request.user.username  # asegura que se guarde el usuario logueado
+            descripcion.usuario = request.user.username  
             descripcion.save()
             mensaje = "💬 La descripción del jugador ha sido cargada correctamente"
             form = DescripcionForm(user=request.user)
@@ -74,7 +74,7 @@ def cargar_descripcion(request):
     return render(request, 'home/cargar_descripcion.html', {'form': form, 'mensaje': mensaje})
 
 
-# ---------- DETALLES ----------
+# DETALLES 
 
 @login_required
 def detalle_jugador(request, id):
@@ -82,7 +82,7 @@ def detalle_jugador(request, id):
     descripcion = Descripcion.objects.filter(jugador=jugador)
     return render(request, 'home/detalle_jugador.html', {'jugador': jugador, 'descripcion': descripcion})
 
-# ---------- ELIMINAR ----------
+#  ELIMINAR 
 
 @login_required
 def eliminar(request):
@@ -118,7 +118,7 @@ class EliminarDescripcion(LoginRequiredMixin, DeleteView):
     template_name = 'home/confirmar_eliminacion_descripcion.html'
     success_url = reverse_lazy('home:eliminar_descripcion')
 
-# ---------- ACTUALIZAR ----------
+#  ACTUALIZAR 
 
 @login_required
 def actualizar(request):

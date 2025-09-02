@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block tittle_text %}Actualizar Descripciones{% endblock tittle_text %}
-{% block h1_text %}Actualizar Descripciones{% endblock h1_text %}
-{% block p_text %}Lista de descripciones ingresadas por los usuarios{% endblock p_text %}
+{% block tittle_text %}Actualizar Comentarios{% endblock tittle_text %}
+{% block h1_text %}Actualizar Comentarios{% endblock h1_text %}
+{% block p_text %}Lista de comentarios ingresados por los usuarios{% endblock p_text %}
 
 {% block content %}
 <div class="container py-5">
@@ -14,7 +14,7 @@
             <a href="{% url 'home:editar_descripcion' desc.id %}" class="btn btn-info btn-sm">Editar</a>
         </li>
         {% empty %}
-        <li class="list-group-item">No hay descripciones.</li>
+        <li class="list-group-item">No hay comentarios.</li>
         {% endfor %}
     </ul>
 </div>
